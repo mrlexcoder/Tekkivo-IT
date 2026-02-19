@@ -455,10 +455,21 @@
   color: #374151;
   transition: color 0.2s;
   font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button svg {
+  transition: transform 0.2s;
 }
 
 .icon-button:hover {
   color: #dc2626;
+}
+
+.icon-button:hover svg {
+  transform: scale(1.1);
 }
 
 /* Mobile Secondary Nav */
