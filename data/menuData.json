@@ -1,0 +1,29 @@
+{
+  "mainMenu": [
+    {
+      "id": 1,
+      "label": "CMS",
+      "href": "/cms"
+    },
+    {
+      "id": 2,
+      "label": "Frameworks",
+      "href": "/frameworks"
+    },
+    {
+      "id": 3,
+      "label": "Technologies",
+      "href": "/technologies"
+    },
+    {
+      "id": 4,
+      "label": "Registrars",
+      "href": "/registrars"
+    },
+    {
+      "id": 5,
+      "label": "Specialists",
+      "href": "/specialists"
+    }
+  ]
+}
