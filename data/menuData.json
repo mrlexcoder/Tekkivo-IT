@@ -25,5 +25,188 @@
       "label": "Specialists",
       "href": "/specialists"
     }
+  ],
+  "secondaryMenu": [
+    {
+      "id": 1,
+      "label": "Companies",
+      "href": "/companies",
+      "hasDropdown": true,
+      "submenu": {
+        "columns": [
+          {
+            "title": "DEVELOPERS",
+            "items": [
+              { "label": "Web developers", "href": "/companies/web-developers" },
+              { "label": "eCommerce", "href": "/companies/ecommerce" },
+              { "label": "Startups", "href": "/companies/startups" },
+              { "label": "Full cycle", "href": "/companies/full-cycle" },
+              { "label": "Artificial Intelligence", "href": "/companies/ai" },
+              { "label": "Blockchain", "href": "/companies/blockchain" },
+              { "label": "AR/VR", "href": "/companies/ar-vr" },
+              { "label": "Others", "href": "/companies/others" }
+            ]
+          },
+          {
+            "title": "MOBILE",
+            "items": [
+              { "label": "iPhone", "href": "/companies/iphone" },
+              { "label": "Android", "href": "/companies/android" },
+              { "label": "iPad", "href": "/companies/ipad" },
+              { "label": "Windows", "href": "/companies/windows" },
+              { "label": "Blackberry", "href": "/companies/blackberry" },
+              { "label": "Wearable", "href": "/companies/wearable" },
+              { "label": "Hybrid", "href": "/companies/hybrid" },
+              { "label": "Others", "href": "/companies/mobile-others" }
+            ]
+          },
+          {
+            "title": "SOFTWARE",
+            "items": [
+              { "label": "Fintech", "href": "/companies/fintech" },
+              { "label": "Edtech", "href": "/companies/edtech" },
+              { "label": "Low-code/No-code", "href": "/companies/low-code" },
+              { "label": "CRM", "href": "/companies/crm" },
+              { "label": "Enterprise solutions (ERP)", "href": "/companies/erp" },
+              { "label": "Real Estate", "href": "/companies/real-estate" },
+              { "label": "Logistics", "href": "/companies/logistics" },
+              { "label": "Others", "href": "/companies/software-others" }
+            ]
+          },
+          {
+            "title": "MARKETING",
+            "items": [
+              { "label": "Digital", "href": "/companies/digital" },
+              { "label": "PPC", "href": "/companies/ppc" },
+              { "label": "SEO", "href": "/companies/seo" },
+              { "label": "SMM", "href": "/companies/smm" },
+              { "label": "Traffic", "href": "/companies/traffic" },
+              { "label": "Advertising", "href": "/companies/advertising" },
+              { "label": "App Marketing", "href": "/companies/app-marketing" },
+              { "label": "Others", "href": "/companies/marketing-others" }
+            ]
+          },
+          {
+            "title": "DESIGN, UI/UX",
+            "items": [
+              { "label": "Gaming", "href": "/companies/gaming" },
+              { "label": "Creative", "href": "/companies/creative" },
+              { "label": "Consulting", "href": "/companies/consulting" },
+              { "label": "Media", "href": "/companies/media" },
+              { "label": "Video Production", "href": "/companies/video-production" },
+              { "label": "PR", "href": "/companies/pr" },
+              { "label": "Analytics", "href": "/companies/analytics" },
+              { "label": "Others", "href": "/companies/design-others" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "label": "Media",
+      "href": "/media",
+      "hasDropdown": true,
+      "submenu": {
+        "columns": [
+          {
+            "title": "CONTENT",
+            "items": [
+              { "label": "News", "href": "/media/news" },
+              { "label": "Articles", "href": "/media/articles" },
+              { "label": "Interviews", "href": "/media/interviews" },
+              { "label": "Case Studies", "href": "/media/case-studies" }
+            ]
+          },
+          {
+            "title": "RESOURCES",
+            "items": [
+              { "label": "Blog", "href": "/media/blog" },
+              { "label": "Guides", "href": "/media/guides" },
+              { "label": "Whitepapers", "href": "/media/whitepapers" },
+              { "label": "Videos", "href": "/media/videos" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "label": "Info",
+      "href": "/info",
+      "hasDropdown": true,
+      "submenu": {
+        "columns": [
+          {
+            "title": "ABOUT",
+            "items": [
+              { "label": "About Us", "href": "/info/about" },
+              { "label": "How It Works", "href": "/info/how-it-works" },
+              { "label": "FAQ", "href": "/info/faq" },
+              { "label": "Contact", "href": "/info/contact" }
+            ]
+          },
+          {
+            "title": "LEGAL",
+            "items": [
+              { "label": "Terms of Service", "href": "/info/terms" },
+              { "label": "Privacy Policy", "href": "/info/privacy" },
+              { "label": "Cookie Policy", "href": "/info/cookies" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "label": "Services",
+      "href": "/services",
+      "hasDropdown": true,
+      "submenu": {
+        "columns": [
+          {
+            "title": "FOR COMPANIES",
+            "items": [
+              { "label": "Get Listed", "href": "/services/get-listed" },
+              { "label": "Premium Profile", "href": "/services/premium" },
+              { "label": "Advertising", "href": "/services/advertising" },
+              { "label": "Lead Generation", "href": "/services/leads" }
+            ]
+          },
+          {
+            "title": "FOR CLIENTS",
+            "items": [
+              { "label": "Find Companies", "href": "/services/find-companies" },
+              { "label": "Request Proposals", "href": "/services/rfp" },
+              { "label": "Compare Quotes", "href": "/services/compare" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "label": "Vacancies",
+      "href": "/vacancies",
+      "hasDropdown": false
+    },
+    {
+      "id": 6,
+      "label": "Reviews",
+      "href": "/reviews",
+      "hasDropdown": false
+    },
+    {
+      "id": 7,
+      "label": "Events",
+      "href": "/events",
+      "hasDropdown": false
+    },
+    {
+      "id": 8,
+      "label": "Courses",
+      "href": "/courses",
+      "hasDropdown": false
+    }
   ]
 }

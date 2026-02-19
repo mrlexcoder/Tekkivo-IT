@@ -7,68 +7,174 @@ import menuData from '../data/menuData.json';
 
 export default function TopHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState<number | null>(null);
+
+  const toggleMobileSubmenu = (id: number) => {
+    setOpenMobileSubmenu(openMobileSubmenu === id ? null : id);
+  };
 
   return (
     <header className="top-header">
-      <div className="header-container">
-        <div className="header-content">
-          {/* Logo */}
-          <Link href="/" className="logo">
-            <div className="logo-icon">
-              <div className="logo-shape"></div>
-            </div>
-            <span className="logo-text">IT Rating</span>
-          </Link>
+      {/* Top Header */}
+      <div className="top-header-main">
+        <div className="header-container">
+          <div className="header-content">
+            {/* Logo */}
+            <Link href="/" className="logo">
+              <div className="logo-icon">
+                <div className="logo-shape"></div>
+              </div>
+              <span className="logo-text">IT Rating</span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="desktop-nav">
-            {menuData.mainMenu.map((item) => (
-              <Link key={item.id} href={item.href} className="nav-link">
+            {/* Desktop Navigation */}
+            <nav className="desktop-nav">
+              {menuData.mainMenu.map((item) => (
+                <Link key={item.id} href={item.href} className="nav-link">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Right Section */}
+            <div className="header-right">
+              <div className="language-selector">
+                <span className="lang-active">EN</span>
+                <span className="lang-divider">|</span>
+                <span className="lang-option">UA</span>
+              </div>
+              <button className="featured-btn">
+                <span className="star-icon">★</span>
+                Get featured
+                <span className="new-badge">NEW</span>
+              </button>
+
+              {/* Mobile Menu Toggle */}
+              <button 
+                className="mobile-menu-toggle"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <nav className="mobile-nav">
+              {menuData.mainMenu.map((item) => (
+                <Link 
+                  key={item.id} 
+                  href={item.href} 
+                  className="mobile-nav-link"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          )}
+        </div>
+      </div>
+
+      {/* Secondary Navigation */}
+      <div className="secondary-nav-wrapper">
+        <nav className="secondary-nav">
+          {menuData.secondaryMenu.map((item) => (
+            <div key={item.id} className="secondary-nav-item">
+              <Link href={item.href} className="secondary-nav-link">
                 {item.label}
+                {item.hasDropdown && <span className="dropdown-arrow">▼</span>}
               </Link>
-            ))}
-          </nav>
 
-          {/* Right Section */}
-          <div className="header-right">
-            <div className="language-selector">
-              <span className="lang-active">EN</span>
-              <span className="lang-divider">|</span>
-              <span className="lang-option">UA</span>
+              {/* Mega Menu Dropdown */}
+              {item.hasDropdown && item.submenu && (
+                <div className="mega-menu">
+                  <div className="mega-menu-columns">
+                    {item.submenu.columns.map((column, idx) => (
+                      <div key={idx} className="mega-menu-column">
+                        <div className="mega-menu-title">{column.title}</div>
+                        <div className="mega-menu-items">
+                          {column.items.map((subItem, subIdx) => (
+                            <Link
+                              key={subIdx}
+                              href={subItem.href}
+                              className="mega-menu-item"
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-            <button className="featured-btn">
-              <span className="star-icon">★</span>
-              Get featured
-              <span className="new-badge">NEW</span>
-            </button>
+          ))}
 
-            {/* Mobile Menu Toggle */}
-            <button 
-              className="mobile-menu-toggle"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
+          {/* AI Button */}
+          <button className="ai-button">
+            AI
+            <span className="ai-badge">NEW</span>
+          </button>
+
+          {/* Icons */}
+          <div className="nav-icons">
+            <button className="icon-button" aria-label="Search">
+              🔍
+            </button>
+            <button className="icon-button" aria-label="User">
+              👤
             </button>
           </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="mobile-nav">
-            {menuData.mainMenu.map((item) => (
-              <Link 
-                key={item.id} 
-                href={item.href} 
-                className="mobile-nav-link"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        )}
+        </nav>
       </div>
+
+      {/* Mobile Secondary Navigation */}
+      {isMenuOpen && (
+        <div className="mobile-secondary-nav">
+          {menuData.secondaryMenu.map((item) => (
+            <div key={item.id} className="mobile-secondary-item">
+              <div
+                className="mobile-secondary-link"
+                onClick={() => item.hasDropdown && toggleMobileSubmenu(item.id)}
+              >
+                <Link href={item.href} onClick={() => !item.hasDropdown && setIsMenuOpen(false)}>
+                  {item.label}
+                </Link>
+                {item.hasDropdown && (
+                  <span className="dropdown-arrow">
+                    {openMobileSubmenu === item.id ? '▲' : '▼'}
+                  </span>
+                )}
+              </div>
+
+              {/* Mobile Submenu */}
+              {item.hasDropdown && item.submenu && (
+                <div className={`mobile-submenu ${openMobileSubmenu === item.id ? 'open' : ''}`}>
+                  {item.submenu.columns.map((column, idx) => (
+                    <div key={idx}>
+                      <div className="mobile-submenu-title">{column.title}</div>
+                      {column.items.map((subItem, subIdx) => (
+                        <Link
+                          key={subIdx}
+                          href={subItem.href}
+                          className="mobile-submenu-item"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </header>
   );
 }
