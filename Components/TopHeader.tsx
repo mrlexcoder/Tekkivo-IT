@@ -87,29 +87,35 @@ export default function TopHeader() {
             <div key={item.id} className="secondary-nav-item">
               <Link href={item.href} className="secondary-nav-link">
                 {item.label}
-                {item.hasDropdown && <span className="dropdown-arrow">▼</span>}
+                {item.hasDropdown && (
+                  <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                )}
               </Link>
 
               {/* Mega Menu Dropdown */}
               {item.hasDropdown && item.submenu && (
                 <div className="mega-menu">
-                  <div className="mega-menu-columns">
-                    {item.submenu.columns.map((column, idx) => (
-                      <div key={idx} className="mega-menu-column">
-                        <div className="mega-menu-title">{column.title}</div>
-                        <div className="mega-menu-items">
-                          {column.items.map((subItem, subIdx) => (
-                            <Link
-                              key={subIdx}
-                              href={subItem.href}
-                              className="mega-menu-item"
-                            >
-                              {subItem.label}
-                            </Link>
-                          ))}
+                  <div className="mega-menu-inner">
+                    <div className="mega-menu-columns">
+                      {item.submenu.columns.map((column, idx) => (
+                        <div key={idx} className="mega-menu-column">
+                          <div className="mega-menu-title">{column.title}</div>
+                          <div className="mega-menu-items">
+                            {column.items.map((subItem, subIdx) => (
+                              <Link
+                                key={subIdx}
+                                href={subItem.href}
+                                className="mega-menu-item"
+                              >
+                                {subItem.label}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -153,9 +159,9 @@ export default function TopHeader() {
                   {item.label}
                 </Link>
                 {item.hasDropdown && (
-                  <span className="dropdown-arrow">
-                    {openMobileSubmenu === item.id ? '▲' : '▼'}
-                  </span>
+                  <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
                 )}
               </div>
 
