@@ -8,9 +8,14 @@ import menuData from '../data/menuData.json';
 export default function TopHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<number | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const toggleMobileSubmenu = (id: number) => {
     setOpenMobileSubmenu(openMobileSubmenu === id ? null : id);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
   };
 
   return (
@@ -130,7 +135,7 @@ export default function TopHeader() {
 
           {/* Icons */}
           <div className="nav-icons">
-            <button className="icon-button" aria-label="Search">
+            <button className="icon-button" aria-label="Search" onClick={toggleSearch}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
@@ -144,6 +149,30 @@ export default function TopHeader() {
             </button>
           </div>
         </nav>
+      </div>
+
+      {/* Search Bar Dropdown */}
+      <div className={`search-dropdown ${isSearchOpen ? 'open' : ''}`}>
+        <div className="search-dropdown-inner">
+          <div className="search-input-wrapper">
+            <svg className="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search for companies, technologies, specialists..."
+              autoFocus={isSearchOpen}
+            />
+            <button className="search-close-btn" onClick={toggleSearch} aria-label="Close search">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Mobile Secondary Navigation */}
