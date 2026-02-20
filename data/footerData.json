@@ -1,0 +1,39 @@
+{
+  "columns": [
+    {
+      "title": "Content",
+      "links": [
+        { "label": "Cases", "href": "/cases" },
+        { "label": "Articles", "href": "/articles" },
+        { "label": "Reviews", "href": "/reviews" },
+        { "label": "Vacancies", "href": "/vacancies" },
+        { "label": "Portfolio", "href": "/portfolio" },
+        { "label": "Service news", "href": "/service-news" },
+        { "label": "Events", "href": "/events" }
+      ]
+    },
+    {
+      "title": "Sections",
+      "links": [
+        { "label": "Web developers", "href": "/companies/web-developers" },
+        { "label": "SEO companies", "href": "/companies/seo" },
+        { "label": "SMM companies", "href": "/companies/smm" },
+        { "label": "PPC companies", "href": "/companies/ppc" },
+        { "label": "Digital Agencies", "href": "/companies/digital" },
+        { "label": "Mobile Marketing companies", "href": "/companies/mobile-marketing" },
+        { "label": "Mobile Development companies", "href": "/companies/mobile-development" }
+      ]
+    },
+    {
+      "title": "Information",
+      "links": [
+        { "label": "About us", "href": "/about" },
+        { "label": "Advertising", "href": "/advertising" },
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Terms of agreement", "href": "/terms" },
+        { "label": "Ratings shedule", "href": "/ratings-schedule" },
+        { "label": "Contacts", "href": "/contacts" }
+      ]
+    }
+  ]
+}
