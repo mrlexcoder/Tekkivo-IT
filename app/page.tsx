@@ -4,6 +4,7 @@ import FirstSecHome from '@/Components/Pages/Homepage/FirstSecHome';
 import SecSecHome from '@/Components/Pages/Homepage/SecSecHome';
 import ThirdSecHome from '@/Components/Pages/Homepage/ThirdSecHome';
 import FourthSecHome from '@/Components/Pages/Homepage/FourthSecHome';
+import FifthSecHome from '@/Components/Pages/Homepage/FifthSecHome';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <SecSecHome />
       <ThirdSecHome />
       <FourthSecHome />
+      <FifthSecHome />
       <Footer />
     </>
   );

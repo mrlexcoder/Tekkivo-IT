@@ -816,6 +816,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+}
+
+.column-header-with-arrows {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.column-header-with-arrows .slider-arrow-small {
+  flex-shrink: 0;
+}
+
+.column-header-with-arrows .column-title {
+  flex: 1;
+  justify-content: center;
 }
 
 .column-title {
@@ -860,10 +876,39 @@
   cursor: pointer;
   transition: background 0.2s;
   color: #6b7280;
+  flex-shrink: 0;
 }
 
 .slider-arrow-small:hover {
   background: #f3f4f6;
+}
+
+/* Case Studies Thumbnail Grid */
+.cases-thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.case-thumbnail {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.case-thumbnail-center {
+  grid-column: 2;
+  grid-row: 2;
+  transform: scale(1.3);
+  z-index: 1;
+}
+
+.case-thumbnail-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+  border: 1px solid #e5e7eb;
 }
 
 /* Case Studies */
@@ -907,6 +952,20 @@
   gap: 8px;
 }
 
+.case-company-link {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: #3b82f6;
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.case-company-link:hover {
+  color: #1d4ed8;
+}
+
 .case-title {
   font-size: 16px;
   font-weight: 600;
@@ -925,14 +984,40 @@
 }
 
 .case-category {
-  color: #9ca3af;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  display: inline-block;
 }
 
 /* Articles */
-.articles-list {
+.articles-list-scrollable {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.articles-list-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.articles-list-scrollable::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 3px;
+}
+
+.articles-list-scrollable::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 3px;
+}
+
+.articles-list-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
 }
 
 .article-item {
@@ -963,7 +1048,12 @@
 }
 
 .article-category {
-  color: #9ca3af;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  display: inline-block;
 }
 
 /* Events */
@@ -1038,17 +1128,19 @@
 .course-image-placeholder {
   width: 100%;
   height: 160px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .course-icon {
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
+  color: #1e3a8a;
+  letter-spacing: 2px;
 }
 
 .course-content {

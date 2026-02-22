@@ -41,18 +41,22 @@ export default function FifthSecHome() {
   const [currentCourseSlide, setCurrentCourseSlide] = useState(0);
 
   const caseStudies: CaseStudy[] = [
-    { id: 1, company: 'UAITLAB', title: 'Case Study: Agromat.', date: '24 February 2026', category: 'Website development', image: '' },
+    { id: 1, company: 'UAITLAB', title: 'Case Study: Agromat.', date: '24 February 2025', category: 'Website development', image: '' },
     { id: 2, company: 'Promodex', title: 'Simple CRM system based on OpenCart', date: '13 September 2022', category: 'Website development', image: '' },
   ];
 
+  // Thumbnail images for the grid (9 items for 3x3 grid)
+  const caseThumbnails = Array.from({ length: 9 }, (_, i) => i + 1);
+
   const articles: Article[] = [
-    { id: 1, title: 'IT Admin: In-App Community vs Discord: A Practical Buyer\'s Guide', date: '21 February 2026', category: 'Other' },
+    { id: 1, title: 'IT Admin: In-App Community vs Discord: A Practical Buyer\'s Guide', date: '19 February 2026', category: 'Other' },
     { id: 2, title: 'International IT Rating: Brandy and Billy Wiseman Net Worth and Biography 2024', date: '18 February 2026', category: 'Other' },
     { id: 3, title: 'International IT Rating: The Best Nightclubs in New York City Right Now: Where the City Truly Comes Alive After Dark', date: '17 February 2026', category: 'Other' },
     { id: 4, title: 'IT Admin: Maltipoo: A Detailed Breed Guide for Future IT Owners', date: '16 February 2026', category: 'Other' },
-    { id: 5, title: 'IT Admin: Online Schools in Nevada: Free vs Paid', date: '13 February 2026', category: 'Other' },
-    { id: 6, title: 'IT Admin: How Small Brands Grow Facebook Pages Without Ads', date: '11 February 2026', category: 'SMM' },
-    { id: 7, title: 'International IT Rating: Top Nearshore Companies Offering Dedicated Development Teams in 2026', date: '11 February 2026', category: 'Website development' },
+    { id: 5, title: 'IT Admin: Online Schools in Nevada: Free vs Paid', date: '12 February 2026', category: 'Other' },
+    { id: 6, title: 'IT Admin: Best Bean-to-Bar Craft Chocolate Makers in the World — Artisan Guide 2026', date: '11 February 2026', category: 'Other' },
+    { id: 7, title: 'IT Admin: How Small Brands Grow Facebook Pages Without Ads', date: '11 February 2026', category: 'SMM' },
+    { id: 8, title: 'International IT Rating: Top Nearshore', date: '10 February 2026', category: 'Other' },
   ];
 
   const events: Event[] = [
@@ -79,6 +83,18 @@ export default function FifthSecHome() {
                 </svg>
               </h2>
             </div>
+            {/* Thumbnail Grid */}
+            <div className="cases-thumbnail-grid">
+              {caseThumbnails.map((thumb, index) => (
+                <div 
+                  key={thumb} 
+                  className={`case-thumbnail ${index === 4 ? 'case-thumbnail-center' : ''}`}
+                >
+                  <div className="case-thumbnail-image"></div>
+                </div>
+              ))}
+            </div>
+            {/* Case Studies List */}
             <div className="cases-list">
               {caseStudies.map((caseItem) => (
                 <div key={caseItem.id} className="case-card">
@@ -86,6 +102,7 @@ export default function FifthSecHome() {
                     <span className="case-company">{caseItem.company}</span>
                   </div>
                   <div className="case-content">
+                    <Link href="#" className="case-company-link">{caseItem.company}</Link>
                     <h3 className="case-title">{caseItem.title}</h3>
                     <div className="case-meta">
                       <span className="case-date">{caseItem.date}</span>
@@ -107,7 +124,7 @@ export default function FifthSecHome() {
                 </svg>
               </h2>
             </div>
-            <div className="articles-list">
+            <div className="articles-list-scrollable">
               {articles.map((article) => (
                 <div key={article.id} className="article-item">
                   <h3 className="article-title">{article.title}</h3>
@@ -123,31 +140,26 @@ export default function FifthSecHome() {
           {/* Column 3: Events & IT course */}
           <div className="content-column">
             {/* Events */}
-            <div className="column-header">
+            <div className="column-header column-header-with-arrows">
+              <button 
+                className="slider-arrow-small" 
+                onClick={() => setCurrentEventSlide((prev) => (prev - 1 + events.length) % events.length)}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
               <h2 className="column-title">
                 <Link href="/events">Events</Link>
+              </h2>
+              <button 
+                className="slider-arrow-small" 
+                onClick={() => setCurrentEventSlide((prev) => (prev + 1) % events.length)}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-              </h2>
-              <div className="slider-arrows-small">
-                <button 
-                  className="slider-arrow-small" 
-                  onClick={() => setCurrentEventSlide((prev) => (prev - 1 + events.length) % events.length)}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <button 
-                  className="slider-arrow-small" 
-                  onClick={() => setCurrentEventSlide((prev) => (prev + 1) % events.length)}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
+              </button>
             </div>
             <div className="event-card">
               <div className="event-image-placeholder"></div>
@@ -177,35 +189,30 @@ export default function FifthSecHome() {
             </div>
 
             {/* IT course */}
-            <div className="column-header" style={{ marginTop: '32px' }}>
+            <div className="column-header column-header-with-arrows" style={{ marginTop: '32px' }}>
+              <button 
+                className="slider-arrow-small" 
+                onClick={() => setCurrentCourseSlide((prev) => (prev - 1 + courses.length) % courses.length)}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
               <h2 className="column-title">
                 <Link href="/courses">IT course</Link>
+              </h2>
+              <button 
+                className="slider-arrow-small" 
+                onClick={() => setCurrentCourseSlide((prev) => (prev + 1) % courses.length)}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-              </h2>
-              <div className="slider-arrows-small">
-                <button 
-                  className="slider-arrow-small" 
-                  onClick={() => setCurrentCourseSlide((prev) => (prev - 1 + courses.length) % courses.length)}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <button 
-                  className="slider-arrow-small" 
-                  onClick={() => setCurrentCourseSlide((prev) => (prev + 1) % courses.length)}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
+              </button>
             </div>
             <div className="course-card">
               <div className="course-image-placeholder">
-                <span className="course-icon">IC</span>
+                <span className="course-icon">Icl</span>
               </div>
               <div className="course-content">
                 <span className="course-date">{courses[currentCourseSlide].date}</span>
