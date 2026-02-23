@@ -1,0 +1,106 @@
+/* =============================================================
+   TEKKIVO-IT — Global Font Size Tokens
+   File: FontSize/fontSize.css
+   ---------------------------------------------------------------
+   HOW TO USE
+   • Import this file at the top of any CSS file:
+       @import url('../../FontSize/fontSize.css');
+   • Then reference variables anywhere, e.g.:
+       font-size: var(--fs-heading);
+   ---------------------------------------------------------------
+   NAMING CONVENTION
+   --fs-{role}
+   Roles: heading | subheading-lg | subheading | body | small | xs
+   ============================================================= */
+
+:root {
+
+    /* ── Main page / section heading (H1)
+     Desktop: 30px — large, impactful, used once per page         */
+    --fs-heading: 30px;
+
+    /* ── Large subheading (H2)
+     Desktop: 25px — section titles, sidebar titles               */
+    --fs-subheading-lg: 25px;
+
+    /* ── Small subheading (H3)
+     Desktop: 18px — card titles, sub-section labels              */
+    --fs-subheading: 18px;
+
+    /* ── Body / paragraph text
+     Desktop: 16px — general readable body copy                   */
+    --fs-body: 16px;
+
+    /* ── Secondary / supporting text
+     Desktop: 14px — dates, metadata, captions                    */
+    --fs-small: 14px;
+
+    /* ── Extra-small / labels
+     Desktop: 12px — uppercase labels, badges, tags               */
+    --fs-xs: 12px;
+
+    /* ── Line heights ─────────────────────────────────────────── */
+    --lh-heading: 1.30;
+    /* tight — headings benefit from less space */
+    --lh-body: 1.75;
+    /* comfortable reading rhythm               */
+    --lh-small: 1.50;
+    /* metadata / captions                      */
+
+    /* ── Font weights ─────────────────────────────────────────── */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+    --fw-black: 800;
+
+}
+
+/* =============================================================
+   RESPONSIVE OVERRIDES
+   Scales every token down gracefully on smaller screens.
+   ============================================================= */
+
+/* ── Tablet  (≤ 1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+    :root {
+        --fs-heading: 26px;
+        /* H1: slightly smaller on tablet    */
+        --fs-subheading-lg: 22px;
+        /* H2: tightened                     */
+        --fs-subheading: 17px;
+        /* H3: minimal change                */
+        --fs-body: 15px;
+        /* body: comfort reading on tablet   */
+        --fs-small: 13px;
+        --fs-xs: 11px;
+    }
+}
+
+/* ── Large Mobile  (≤ 768px) ─────────────────────────────── */
+@media (max-width: 768px) {
+    :root {
+        --fs-heading: 22px;
+        /* H1: fits narrow screens           */
+        --fs-subheading-lg: 19px;
+        /* H2                                */
+        --fs-subheading: 16px;
+        /* H3                                */
+        --fs-body: 15px;
+        /* body unchanged                    */
+        --fs-small: 13px;
+        --fs-xs: 11px;
+    }
+}
+
+/* ── Small Mobile  (≤ 480px) ─────────────────────────────── */
+@media (max-width: 480px) {
+    :root {
+        --fs-heading: 19px;
+        /* H1: compact — priority is legibility */
+        --fs-subheading-lg: 17px;
+        --fs-subheading: 15px;
+        --fs-body: 14px;
+        --fs-small: 12px;
+        --fs-xs: 10px;
+    }
+}

@@ -1,0 +1,401 @@
+/* =============================================================
+   Performers Listing Page — performers.css
+   Mirrors the IT-Rating reference design.
+   Font sizes use local CSS variables for easy global control.
+   ============================================================= */
+
+:root {
+    --pf-fs-h1: 28px;
+    --pf-fs-h2: 22px;
+    --pf-fs-body: 15px;
+    --pf-fs-small: 13px;
+    --pf-fs-xs: 12px;
+    --pf-color-red: #dc2626;
+    --pf-color-link: #2563eb;
+    --pf-border: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --pf-fs-h1: 22px;
+        --pf-fs-h2: 18px;
+        --pf-fs-body: 14px;
+        --pf-fs-small: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --pf-fs-h1: 18px;
+        --pf-fs-h2: 16px;
+    }
+}
+
+/* ── Page wrapper ───────────────────────────────────────────── */
+.performers-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+    font-family: 'Montserrat', sans-serif;
+    background: #fff;
+    min-height: 100vh;
+}
+
+/* ── Breadcrumb ─────────────────────────────────────────────── */
+.performers-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--pf-fs-xs);
+    color: #9ca3af;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.performers-breadcrumb a {
+    color: #9ca3af;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.performers-breadcrumb a:hover {
+    color: #6b7280;
+}
+
+.bc-sep {
+    color: #d1d5db;
+    font-size: 10px;
+}
+
+.bc-item {
+    color: #6b7280;
+}
+
+.bc-current {
+    color: #374151;
+    font-weight: 600;
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.performers-hero {
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--pf-border);
+    padding-bottom: 24px;
+}
+
+/* H1: 28px */
+.performers-h1 {
+    font-size: var(--pf-fs-h1);
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.performers-ranking-date {
+    font-size: var(--pf-fs-small);
+    color: var(--pf-color-red);
+    font-weight: 600;
+    margin: 0 0 14px;
+}
+
+.performers-description {
+    font-size: var(--pf-fs-body);
+    color: #6b7280;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.performers-description a {
+    color: var(--pf-color-link);
+}
+
+/* ── List title — H2: 22px ──────────────────────────────────── */
+.performers-list-title {
+    font-size: var(--pf-fs-h2);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 20px;
+}
+
+/* ── Filter bar ─────────────────────────────────────────────── */
+.performers-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--pf-border);
+}
+
+.filter-bar-left {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid var(--pf-border);
+    border-radius: 20px;
+    background: #fff;
+    font-size: var(--pf-fs-xs);
+    font-family: inherit;
+    cursor: pointer;
+    color: #374151;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.filter-pill:hover {
+    border-color: #9ca3af;
+    background: #f9fafb;
+}
+
+.filter-pill-active {
+    border-color: #374151;
+    font-weight: 600;
+}
+
+.filter-methodology {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-size: var(--pf-fs-xs);
+    font-family: inherit;
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+.filter-methodology:hover {
+    color: #111827;
+}
+
+/* ── Table header ───────────────────────────────────────────── */
+.performers-table-header {
+    display: grid;
+    grid-template-columns: 40px 60px 1fr 80px 80px 80px 80px;
+    gap: 0;
+    padding: 10px 16px;
+    background: #f9fafb;
+    border: 1px solid var(--pf-border);
+    border-radius: 6px 6px 0 0;
+    font-size: var(--pf-fs-xs);
+    font-weight: 700;
+    color: #374151;
+    align-items: center;
+}
+
+.sort-arrow {
+    color: #9ca3af;
+    font-size: 10px;
+}
+
+.col-num {
+    text-align: center;
+}
+
+.col-company {}
+
+.col-stat {
+    text-align: center;
+}
+
+/* ── Company rows ───────────────────────────────────────────── */
+.performers-list {}
+
+.company-row {
+    display: grid;
+    grid-template-columns: 40px 60px 1fr 80px 80px 80px 80px;
+    gap: 0;
+    align-items: start;
+    padding: 20px 16px;
+    border: 1px solid var(--pf-border);
+    border-top: none;
+    transition: background 0.15s;
+}
+
+.company-row:last-child {
+    border-radius: 0 0 6px 6px;
+}
+
+.company-row:hover {
+    background: #fafafa;
+}
+
+/* Number */
+.company-num {
+    font-size: var(--pf-fs-small);
+    color: #6b7280;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 4px;
+}
+
+/* Logo */
+.company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    flex-shrink: 0;
+    letter-spacing: -0.5px;
+    margin-top: 2px;
+}
+
+/* Info */
+.company-info {
+    padding: 0 16px;
+}
+
+.company-name {
+    font-size: var(--pf-fs-body);
+    font-weight: 700;
+    color: #111827;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+    transition: color 0.2s;
+}
+
+.company-name:hover {
+    color: var(--pf-color-link);
+}
+
+.company-type {
+    font-size: var(--pf-fs-xs);
+    color: #6b7280;
+    margin: 0 0 8px;
+}
+
+.company-desc {
+    font-size: var(--pf-fs-xs);
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.company-read-more {
+    font-size: var(--pf-fs-xs);
+    color: var(--pf-color-link);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.company-read-more:hover {
+    opacity: 0.8;
+}
+
+/* Chips */
+.company-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--pf-border);
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--pf-fs-xs);
+    color: #6b7280;
+}
+
+.chip svg {
+    flex-shrink: 0;
+}
+
+/* Stats */
+.company-stat {
+    text-align: center;
+    font-size: var(--pf-fs-body);
+    font-weight: 700;
+    color: #111827;
+    padding-top: 4px;
+}
+
+/* CTA */
+.company-cta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.visit-btn {
+    display: inline-block;
+    background: var(--pf-color-red);
+    color: #fff;
+    font-size: var(--pf-fs-xs);
+    font-weight: 700;
+    font-family: inherit;
+    padding: 10px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.visit-btn:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+}
+
+/* Empty state */
+.performers-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6b7280;
+}
+
+.performers-back-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--pf-color-link);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .performers-table-header {
+        display: none;
+    }
+
+    .company-row {
+        grid-template-columns: 40px 50px 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .company-stat,
+    .company-cta {
+        grid-column: 3;
+    }
+
+    .company-cta {
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+}

@@ -1203,3 +1203,187 @@
     font-size: 18px;
   }
 }
+
+/* Sixth Section - About IT Rating */
+.sixth-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 60px 0;
+}
+
+.sixth-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sixth-section-main-title {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  color: #111827;
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+}
+
+.sixth-section-subtitle {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  color: #111827;
+  margin: 0 0 24px 0;
+  line-height: 1.4;
+}
+
+.sixth-section-content {
+  position: relative;
+}
+
+.sixth-section-text-wrapper {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.sixth-section-text-wrapper.scrollable {
+  height: 280px;
+  max-height: 280px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 8px;
+}
+
+.sixth-section-text-wrapper.expanded {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+}
+
+.sixth-section-text {
+  margin-bottom: 0;
+}
+
+/* Custom Scrollbar for Sixth Section */
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar {
+  width: 18px;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-left: 1px solid #e5e7eb;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-thumb {
+  background: #1e3a8a;
+  border-radius: 0;
+  border: 1px solid #1e3a8a;
+  min-height: 30px;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
+}
+
+/* Scrollbar buttons (up/down arrows) */
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-button {
+  display: block;
+  height: 18px;
+  width: 18px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-bottom: 1px solid #e5e7eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='18 15 12 9 6 15'%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-top: 1px solid #e5e7eb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+  background-color: #e5e7eb;
+}
+
+.sixth-section-text-wrapper.scrollable::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+  background-color: #e5e7eb;
+}
+
+/* Firefox scrollbar */
+.sixth-section-text-wrapper.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: #1e3a8a #f3f4f6;
+}
+
+.sixth-section-footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.sixth-section-paragraph {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  color: #111827;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+.sixth-section-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.sixth-section-short-text {
+  display: block;
+}
+
+.sixth-section-full-text {
+  display: block;
+}
+
+.sixth-section-more-link {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  color: #111827;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-top: 8px;
+}
+
+.sixth-section-more-link:hover {
+  color: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sixth-section {
+    padding: 40px 0;
+  }
+
+  .sixth-section-main-title {
+    font-size: 24px;
+  }
+
+  .sixth-section-subtitle {
+    font-size: 20px;
+  }
+
+  .sixth-section-paragraph {
+    font-size: 15px;
+  }
+}

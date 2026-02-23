@@ -1,0 +1,595 @@
+/* =============================================================
+   Single Case Study Page Styles
+   Imports font tokens from FontSize/fontSize.css
+   All font-size values use CSS custom properties — edit sizes
+   only in FontSize/fontSize.css, they cascade here automatically.
+   ============================================================= */
+
+/* ── Font size tokens ──────────────────────────────────────── */
+/* NOTE: Next.js serves /public files from root, so relative
+   @import won't work from here. Tokens are re-declared below
+   as a mirror of FontSize/fontSize.css so both files stay
+   in sync.  To update, change BOTH files (or set up a
+   CSS bundler / global layout import).                          */
+
+/* Desktop defaults (mirrors FontSize/fontSize.css :root block) */
+:root {
+  /* Heading H1 ––––––––––––––––––––– 30px ––– section titles   */
+  --sc-fs-heading: 30px;
+
+  /* Large subheading H2 –––––––––––– 25px ––– content sections */
+  --sc-fs-subheading-lg: 25px;
+
+  /* Small subheading H3 –––––––––––– 18px ––– card/meta labels */
+  --sc-fs-subheading: 18px;
+
+  /* Body / paragraph text ––––––––– 16px ––– readable content  */
+  --sc-fs-body: 16px;
+
+  /* Secondary text ––––––––––––––– 14px ––– dates, meta data   */
+  --sc-fs-small: 14px;
+
+  /* Extra-small labels ––––––––––– 12px ––– badges, uppercase  */
+  --sc-fs-xs: 12px;
+
+  /* Line heights */
+  --sc-lh-heading: 1.30;
+  --sc-lh-body: 1.75;
+  --sc-lh-small: 1.50;
+}
+
+/* Responsive token overrides — tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --sc-fs-heading: 26px;
+    --sc-fs-subheading-lg: 22px;
+    --sc-fs-subheading: 17px;
+    --sc-fs-body: 15px;
+    --sc-fs-small: 13px;
+    --sc-fs-xs: 11px;
+  }
+}
+
+/* Responsive token overrides — large mobile (≤ 768px) */
+@media (max-width: 768px) {
+  :root {
+    --sc-fs-heading: 22px;
+    --sc-fs-subheading-lg: 19px;
+    --sc-fs-subheading: 16px;
+    --sc-fs-body: 15px;
+    --sc-fs-small: 13px;
+    --sc-fs-xs: 11px;
+  }
+}
+
+/* Responsive token overrides — small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  :root {
+    --sc-fs-heading: 19px;
+    --sc-fs-subheading-lg: 17px;
+    --sc-fs-subheading: 15px;
+    --sc-fs-body: 14px;
+    --sc-fs-small: 12px;
+    --sc-fs-xs: 10px;
+  }
+}
+
+/* =============================================================
+   Page wrapper
+   ============================================================= */
+.single-case-page {
+  width: 100%;
+  background: #ffffff;
+  padding: 40px 0 80px;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Breadcrumb ─────────────────────────────────────────────── */
+.single-case-breadcrumb {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: var(--sc-fs-xs);
+  /* 12px — tiny navigation trail */
+  color: #9ca3af;
+}
+
+.single-case-breadcrumb a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.single-case-breadcrumb a:hover {
+  color: #6b7280;
+}
+
+.breadcrumb-separator {
+  color: #d1d5db;
+}
+
+.breadcrumb-current {
+  color: #6b7280;
+}
+
+/* ── Main Container ─────────────────────────────────────────── */
+.single-case-container {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+}
+
+/* ── Toolbar: social share + BACK ───────────────────────────── */
+.single-case-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.social-share-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  background: #1f2937;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.social-icon:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+.back-link {
+  font-size: var(--sc-fs-xs);
+  /* 12px — compact action label */
+  font-weight: 700;
+  color: #dc2626;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover {
+  opacity: 0.75;
+}
+
+/* ── Title + views ──────────────────────────────────────────── */
+.single-case-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+/* H1 — main article heading: 30px */
+.single-case-title {
+  font-size: var(--sc-fs-heading);
+  /* 30px desktop → 19px mobile */
+  font-weight: 800;
+  color: #111827;
+  line-height: var(--sc-lh-heading);
+  margin: 0;
+  flex: 1;
+}
+
+.single-case-views {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--sc-fs-small);
+  /* 14px — secondary metadata */
+  color: #6b7280;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ── Content sections ───────────────────────────────────────── */
+.single-case-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 48px;
+}
+
+.case-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* H2 — section headings (OBJECTIVES, KEY CHALLENGES…): 25px */
+.case-section-title {
+  font-size: var(--sc-fs-subheading-lg);
+  /* 25px desktop → 17px mobile */
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: var(--sc-lh-heading);
+}
+
+/* Body paragraph text: 16px */
+.case-section-text {
+  font-size: var(--sc-fs-body);
+  /* 16px desktop → 14px mobile */
+  font-weight: 400;
+  color: #374151;
+  line-height: var(--sc-lh-body);
+  margin: 0;
+}
+
+/* Lists (objectives, challenges, results) */
+.case-list {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.case-list li {
+  font-size: var(--sc-fs-body);
+  /* 16px desktop → 14px mobile */
+  color: #374151;
+  line-height: var(--sc-lh-body);
+}
+
+.case-list-bullet {
+  list-style-type: disc;
+}
+
+.case-list-numbered {
+  list-style-type: decimal;
+}
+
+/* ── Promo CTA box ──────────────────────────────────────────── */
+.case-promo-box {
+  border: 2px solid #f59e0b;
+  background: #fffbeb;
+  border-radius: 6px;
+  padding: 24px 28px;
+  margin-top: 8px;
+}
+
+/* Promo headline: 18px (small subheading) */
+.case-promo-headline {
+  font-size: var(--sc-fs-subheading);
+  /* 18px → 15px mobile */
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+  line-height: var(--sc-lh-heading);
+}
+
+/* Promo body text: 14px */
+.case-promo-text {
+  font-size: var(--sc-fs-small);
+  /* 14px → 12px mobile */
+  color: #374151;
+  line-height: var(--sc-lh-body);
+  margin: 0 0 16px;
+}
+
+.case-promo-link {
+  font-size: var(--sc-fs-small);
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.case-promo-link:hover {
+  color: #1d4ed8;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────── */
+.single-case-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+.case-sidebar-thumb {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #f3f4f6;
+}
+
+.case-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0;
+}
+
+.sidebar-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Sidebar labels: 12px uppercase */
+.sidebar-label {
+  font-size: var(--sc-fs-xs);
+  /* 12px → 10px mobile */
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Sidebar values: 18px */
+.sidebar-value {
+  font-size: var(--sc-fs-subheading);
+  /* 18px → 15px mobile */
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sidebar-company {
+  color: #dc2626;
+}
+
+.sidebar-type {
+  color: #2563eb;
+}
+
+.sidebar-date {
+  color: #111827;
+}
+
+/* ── Related Cases Section ──────────────────────────────────── */
+.related-cases-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 20px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.related-cases-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+/* Related section title: 25px */
+.related-cases-title {
+  font-size: var(--sc-fs-subheading-lg);
+  /* 25px → 17px mobile */
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.related-cases-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.all-cases-link {
+  font-size: var(--sc-fs-small);
+  /* 14px */
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.all-cases-link:hover {
+  color: #111827;
+}
+
+.related-cases-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.related-arrow-btn {
+  width: 38px;
+  height: 38px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #6b7280;
+}
+
+.related-arrow-btn:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.related-cases-container {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.related-cases-slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.35s ease;
+}
+
+.related-case-card {
+  flex: 0 0 calc(25% - 15px);
+  min-width: calc(25% - 15px);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-case-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+  transform: translateY(-3px);
+}
+
+.related-case-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.related-case-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+}
+
+/* Related card title: 18px (small subheading) */
+.related-case-title {
+  font-size: var(--sc-fs-subheading);
+  /* 18px → 15px mobile */
+  font-weight: 600;
+  color: #111827;
+  margin: 14px 14px 6px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Related card date: 12px */
+.related-case-date {
+  font-size: var(--sc-fs-xs);
+  /* 12px → 10px mobile */
+  color: #6b7280;
+  margin: 0 14px 14px;
+}
+
+/* Dots */
+.related-cases-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.related-cases-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.related-cases-dots .dot.active {
+  background: #dc2626;
+}
+
+/* =============================================================
+   RESPONSIVE LAYOUT ADJUSTMENTS
+   (Font sizes scale via :root tokens above — only layout
+   overrides needed here)
+   ============================================================= */
+
+/* ── Tablet (≤ 1024px) ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .single-case-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .single-case-sidebar {
+    position: static;
+    max-width: 100%;
+  }
+
+  .related-case-card {
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: calc(33.333% - 14px);
+  }
+}
+
+/* ── Large mobile (≤ 768px) ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .single-case-page {
+    padding: 20px 0 40px;
+  }
+
+  .single-case-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .single-case-content {
+    gap: 28px;
+  }
+
+  .related-case-card {
+    flex: 0 0 calc(50% - 10px);
+    min-width: calc(50% - 10px);
+  }
+
+  .related-cases-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .case-promo-box {
+    padding: 18px 20px;
+  }
+}
+
+/* ── Small mobile (≤ 480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .related-case-card {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

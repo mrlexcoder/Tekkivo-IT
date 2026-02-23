@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import '../../../public/Styles/HomeStyles.css';
 
 interface DropdownOption {
@@ -43,10 +44,10 @@ const CustomDropdown = ({
       <div className="custom-dropdown-trigger" onClick={onToggle}>
         <span className="dropdown-value">{value}</span>
         <svg className="dropdown-icon" width="10" height="6" viewBox="0 0 10 6" fill="none">
-          <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
-      
+
       {isOpen && (
         <div className="custom-dropdown-menu">
           {hasSearch && (
@@ -118,22 +119,24 @@ const cityOptions: DropdownOption[] = [
   { value: 'Austin', label: 'Austin' },
 ];
 
-const priceOptions: DropdownOption[] = [
-  { value: '$50 - $99', label: '$50 - $99' },
-  { value: '$100 - $149', label: '$100 - $149' },
-  { value: '$150 - $199', label: '$150 - $199' },
-  { value: '$200+', label: '$200+' },
-];
+/** Convert a label to a URL-safe slug: "Web Developers" → "web-developers" */
+function toSlug(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
 
 export default function FirstSecHome() {
+  const router = useRouter();
+
   const [category, setCategory] = useState('Development');
-  const [subcategory, setSubcategory] = useState('Android App Developers');
-  const [city, setCity] = useState('Boston');
-  const [priceRange, setPriceRange] = useState('$50 - $99');
+  const [subcategory, setSubcategory] = useState('Web Developers');
+  const [city, setCity] = useState('New York');
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -143,7 +146,6 @@ export default function FirstSecHome() {
         setSearchTerm('');
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -151,6 +153,13 @@ export default function FirstSecHome() {
   const handleToggleDropdown = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
     setSearchTerm('');
+  };
+
+  /** Navigate to /{subcategory-slug}/{city-slug} */
+  const handleFind = () => {
+    const subcatSlug = toSlug(subcategory); // e.g. "web-developers"
+    const citySlug = toSlug(city);        // e.g. "new-york"
+    router.push(`/performers/${subcatSlug}/${citySlug}`);
   };
 
   return (
@@ -171,6 +180,7 @@ export default function FirstSecHome() {
 
             <div className="search-form">
               <div className="search-form-row">
+                {/* Category */}
                 <CustomDropdown
                   label="Category"
                   value={category}
@@ -183,7 +193,8 @@ export default function FirstSecHome() {
                   onSearchChange={setSearchTerm}
                   dropdownRef={dropdownRef}
                 />
-                
+
+                {/* Subcategory */}
                 <CustomDropdown
                   label="Subcategory"
                   value={subcategory}
@@ -195,7 +206,8 @@ export default function FirstSecHome() {
                   onSearchChange={setSearchTerm}
                   dropdownRef={dropdownRef}
                 />
-                
+
+                {/* City */}
                 <CustomDropdown
                   label="City"
                   value={city}
@@ -207,20 +219,9 @@ export default function FirstSecHome() {
                   onSearchChange={setSearchTerm}
                   dropdownRef={dropdownRef}
                 />
-                
-                <CustomDropdown
-                  label="Price from"
-                  value={priceRange}
-                  options={priceOptions}
-                  onChange={setPriceRange}
-                  isOpen={openDropdown === 'price'}
-                  onToggle={() => handleToggleDropdown('price')}
-                  searchTerm={searchTerm}
-                  onSearchChange={setSearchTerm}
-                  dropdownRef={dropdownRef}
-                />
 
-                <button className="search-submit-btn">
+                {/* Find button — navigates to /performers/{subcategory}/{city} */}
+                <button className="search-submit-btn" onClick={handleFind}>
                   Find a performer
                 </button>
               </div>
